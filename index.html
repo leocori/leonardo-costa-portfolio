@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leonardo Costa - Realizador</title>
+<style>
+:root {
+  --site-primary: #171717;
+  --site-secondary: #d9d3c8;
+  --site-background: #f4f2ed;
+  --site-on-primary: #f7f5f0;
+  --site-on-secondary: #171717;
+  --site-on-background: #171717;
+  --site-font-body: Arial, Helvetica, sans-serif;
+  --site-font-heading: 'Arial Narrow', 'Helvetica Neue', Arial, sans-serif;
+  --site-heading-scale: 1;
+  --site-spacing-scale: 1;
+  --site-radius-scale: 1;
+  --site-decoration-opacity: 1;
+  color-scheme: light dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: var(--site-font-body); background: light-dark(#f4f2ed,#141414); color: light-dark(#171717,#f4f2ed); }
+#site { min-height: 100vh; width: 100%; border-radius: 0; background-color: var(--site-background); color: var(--site-on-background); }
+a { color: inherit; text-decoration: none; }
+.topbar { display:flex; align-items:center; justify-content:space-between; padding: 24px clamp(20px,4vw,64px); border-bottom:1px solid color-mix(in srgb,var(--site-on-background) 20%,transparent); position:sticky; top:0; z-index:10; background:color-mix(in srgb,var(--site-background) 94%,transparent); backdrop-filter: blur(12px); }
+.wordmark { font-size: 14px; font-weight: 800; letter-spacing:.14em; text-transform:uppercase; }
+.nav { display:flex; gap:clamp(14px,3vw,42px); font-size:11px; letter-spacing:.12em; text-transform:uppercase; }
+.nav a { padding:6px 0; border-bottom:1px solid transparent; }
+.nav a:hover,.nav a:focus-visible { border-color:currentColor; }
+.hero { padding: clamp(42px,8vw,112px) clamp(20px,4vw,64px) clamp(28px,5vw,66px); }
+.eyebrow { font-size:10px; text-transform:uppercase; letter-spacing:.2em; margin:0 0 22px; opacity:.7; }
+h1 { font-family:var(--site-font-heading); font-size:clamp(58px,13.5vw,190px); line-height:.78; letter-spacing:-.085em; font-weight:800; text-transform:uppercase; margin:0; max-width:1200px; }
+.hero-bottom { display:flex; justify-content:space-between; align-items:flex-end; gap:30px; margin-top:clamp(36px,7vw,84px); }
+.intro { font-size:clamp(15px,1.7vw,21px); line-height:1.45; max-width:480px; margin:0; }
+.scroll-note { font-size:10px; letter-spacing:.16em; text-transform:uppercase; white-space:nowrap; }
+.section-head { display:flex; justify-content:space-between; align-items:baseline; padding:22px clamp(20px,4vw,64px); border-top:1px solid color-mix(in srgb,var(--site-on-background) 25%,transparent); border-bottom:1px solid color-mix(in srgb,var(--site-on-background) 25%,transparent); }
+.section-head h2 { font-size:12px; font-weight:700; letter-spacing:.15em; text-transform:uppercase; margin:0; }
+.section-head span { font-size:10px; letter-spacing:.12em; opacity:.65; text-transform:uppercase; }
+.grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1px; background:color-mix(in srgb,var(--site-on-background) 20%,transparent); border-bottom:1px solid color-mix(in srgb,var(--site-on-background) 20%,transparent); }
+.project { background:var(--site-background); min-width:0; display:block; }
+.poster { aspect-ratio: 4 / 3; overflow:hidden; position:relative; display:flex; align-items:flex-end; padding:24px; isolation:isolate; background:#4a4a43; }
+.poster:before,.poster:after { content:""; position:absolute; inset:0; z-index:-1; }
+.poster:before { opacity:var(--site-decoration-opacity); background:radial-gradient(ellipse at 70% 25%,rgba(255,245,211,.7),transparent 22%),linear-gradient(140deg,transparent 28%,rgba(0,0,0,.55) 29% 31%,transparent 32%),linear-gradient(25deg,#1b2727,#9a7259 55%,#e3c9a3); transition:transform .65s cubic-bezier(.2,.75,.2,1); }
+.project:nth-child(2) .poster:before { background:radial-gradient(ellipse at 48% 45%,rgba(243,196,133,.8),transparent 16%),linear-gradient(90deg,rgba(12,22,35,.9),transparent 70%),linear-gradient(140deg,#101d2a,#5e7d83 50%,#b4a08b); }
+.project:nth-child(3) .poster:before { background:radial-gradient(ellipse at 70% 30%,rgba(247,231,196,.8),transparent 15%),linear-gradient(0deg,rgba(0,0,0,.6),transparent 60%),linear-gradient(135deg,#a69a85,#55615b 50%,#202d2d); }
+.project:nth-child(4) .poster:before { background:radial-gradient(ellipse at 30% 35%,rgba(255,255,255,.5),transparent 18%),linear-gradient(30deg,#202020,#765d4c 55%,#c5a47c); }
+.project:nth-child(5) .poster:before { background:radial-gradient(ellipse at 60% 30%,rgba(255,218,145,.8),transparent 12%),linear-gradient(145deg,#302f42,#9d4e3d 60%,#d6a77b); }
+.project:nth-child(6) .poster:before { background:radial-gradient(ellipse at 45% 35%,rgba(244,241,225,.65),transparent 20%),linear-gradient(0deg,#111 0%,transparent 65%),linear-gradient(130deg,#64706b,#d3c6ae 50%,#343b3a); }
+.poster:after { background:linear-gradient(0deg,rgba(0,0,0,.48),transparent 65%); }
+.project:hover .poster:before { transform:scale(1.06); }
+.poster-label { color:#fff; font-size:clamp(20px,3vw,42px); font-weight:800; letter-spacing:-.06em; line-height:.9; text-transform:uppercase; max-width:90%; }
+.project-info { display:flex; justify-content:space-between; gap:12px; padding:15px 16px 19px; font-size:10px; letter-spacing:.1em; text-transform:uppercase; }
+.project-info span:last-child { opacity:.6; text-align:right; }
+.project-link { display:inline-block; margin:0 16px 18px; font-size:10px; letter-spacing:.1em; text-transform:uppercase; border-bottom:1px solid currentColor; padding-bottom:5px; }
+.project-link:hover { opacity:.65; }
+.about { display:grid; grid-template-columns:1fr 1fr; gap:clamp(28px,7vw,100px); padding:clamp(48px,9vw,120px) clamp(20px,4vw,64px); }
+.about h2 { font-family:var(--site-font-heading); font-size:clamp(42px,7vw,92px); line-height:.88; letter-spacing:-.07em; text-transform:uppercase; margin:0; }
+.about-copy { max-width:520px; font-size:clamp(15px,1.6vw,19px); line-height:1.6; }
+.about-copy p { margin:0 0 20px; }
+.about-link { display:inline-block; margin-top:12px; padding-bottom:7px; border-bottom:1px solid currentColor; font-size:11px; text-transform:uppercase; letter-spacing:.12em; }
+.contact { background:var(--site-primary); color:var(--site-on-primary); padding:clamp(48px,9vw,120px) clamp(20px,4vw,64px) 28px; }
+.contact-top { display:flex; justify-content:space-between; align-items:flex-start; gap:30px; }
+.contact h2 { font-family:var(--site-font-heading); font-size:clamp(50px,10vw,132px); line-height:.82; letter-spacing:-.08em; text-transform:uppercase; margin:0 0 52px; }
+.contact-mail { font-size:clamp(18px,2.5vw,30px); border-bottom:1px solid #aaa; padding-bottom:8px; }
+.footer { display:flex; justify-content:space-between; gap:20px; border-top:1px solid #555; padding-top:18px; margin-top:90px; font-size:10px; letter-spacing:.12em; text-transform:uppercase; opacity:.7; }
+.socials { display:flex; gap:22px; }
+/* Direção visual: cinema editorial, contraste profundo e detalhes quentes. */
+:root { --site-primary:#10100f; --site-secondary:#d7a46b; --site-background:#111110; --site-on-primary:#f4f0e8; --site-on-secondary:#111110; --site-on-background:#f4f0e8; --site-font-body:Arial,Helvetica,sans-serif; --site-font-heading:'Arial Narrow','Helvetica Neue',Arial,sans-serif; color-scheme:dark; }
+body { background:#111110; color:#f4f0e8; }
+#site { background:#111110; color:#f4f0e8; }
+.topbar { padding:22px clamp(20px,5vw,76px); border-bottom:1px solid rgba(244,240,232,.16); background:rgba(17,17,16,.88); }
+.wordmark { font-size:12px; letter-spacing:.22em; }
+.nav { gap:clamp(18px,3.4vw,48px); font-size:10px; letter-spacing:.16em; }
+.nav a { opacity:.72; transition:opacity .25s ease,color .25s ease; }
+.nav a:hover,.nav a:focus-visible { opacity:1; color:#d7a46b; border-color:#d7a46b; }
+.hero { min-height:min(760px,85vh); display:flex; flex-direction:column; justify-content:center; padding:clamp(70px,10vw,140px) clamp(20px,5vw,76px) clamp(50px,7vw,90px); position:relative; overflow:hidden; }
+.hero:after { content:'LC'; position:absolute; right:-.04em; bottom:-.28em; z-index:0; pointer-events:none; color:rgba(244,240,232,.035); font-size:clamp(260px,49vw,700px); font-weight:900; letter-spacing:-.12em; line-height:1; }
+.hero > * { position:relative; z-index:1; }
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  opacity: 0.65;
+}
+.eyebrow { color:#d7a46b; font-size:9px; letter-spacing:.24em; margin-bottom:28px; }
+h1 { font-size:clamp(66px,12.5vw,178px); line-height:.82; letter-spacing:-.095em; max-width:1300px; }
+.hero-bottom { margin-top:clamp(46px,8vw,100px); }
+.intro { max-width:440px; color:rgba(244,240,232,.76); font-size:clamp(15px,1.5vw,19px); }
+.scroll-note { color:#d7a46b; }
+.section-head { padding:22px clamp(20px,5vw,76px); border-color:rgba(244,240,232,.18); }
+.section-head h2 { letter-spacing:.2em; }
+.section-head span { color:rgba(244,240,232,.55); }
+.grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:1px; background:rgba(244,240,232,.12); border-color:rgba(244,240,232,.12); }
+.project { background:#111110; padding:10px; }
+.poster { aspect-ratio:16 / 10; padding:clamp(18px,2.5vw,34px); background:#24231f; }
+.poster:before { filter:saturate(.78) contrast(1.08); }
+.poster:after { background:linear-gradient(0deg,rgba(0,0,0,.72),transparent 72%),linear-gradient(90deg,rgba(0,0,0,.16),transparent); }
+.poster-label { font-size:clamp(26px,4vw,58px); letter-spacing:-.075em; text-shadow:0 2px 20px rgba(0,0,0,.2); }
+.project-info { padding:17px 8px 12px; font-size:9px; letter-spacing:.13em; color:rgba(244,240,232,.75); }
+.project-link { margin:0 8px 12px; padding-bottom:7px; color:#d7a46b; font-size:9px; letter-spacing:.14em; }
+.about { background:#e9e4da; color:#171715; padding:clamp(70px,11vw,150px) clamp(20px,5vw,76px); gap:clamp(35px,8vw,120px); }
+.about .eyebrow { color:#87603d; }
+.about h2 { font-size:clamp(48px,7.8vw,104px); }
+.about-copy { font-size:clamp(15px,1.5vw,18px); line-height:1.75; color:#35332e; }
+.about-link { border-color:#87603d; color:#6c482a; letter-spacing:.15em; }
+.contact { background:#171715; color:#f4f0e8; padding:clamp(70px,11vw,145px) clamp(20px,5vw,76px) 28px; }
+.contact h2 { font-size:clamp(58px,11vw,150px); }
+.contact-mail { border-color:#d7a46b; }
+.footer { border-color:rgba(244,240,232,.22); }
+.poster { background-size:cover; background-position:center; }
+.poster.has-thumbnail:before { background-image:none!important; }
+.poster.has-thumbnail .poster-label { opacity:0; transform:translateY(8px); transition:opacity .35s ease,transform .35s ease; }
+.project:hover .poster.has-thumbnail .poster-label,.project:focus-within .poster.has-thumbnail .poster-label { opacity:1; transform:translateY(0); }
+.about { align-items:center; }
+.about-photo-wrap { position:relative; overflow:hidden; min-height:360px; aspect-ratio:4/5; max-height:680px; background:#26251f; isolation:isolate; }
+.about-photo { display:block; width:100%; height:100%; min-height:360px; object-fit:cover; object-position:center; filter:grayscale(100%); transform:scale(1.015); transition:filter .7s cubic-bezier(.2,.75,.2,1),transform .9s cubic-bezier(.2,.75,.2,1); }
+.about-photo-wrap:after { content:'LEO COSTA'; position:absolute; left:20px; bottom:18px; color:#fff; font-size:10px; letter-spacing:.22em; text-shadow:0 1px 14px #000; pointer-events:none; }
+.about-photo-wrap:hover .about-photo,.about-photo-wrap:focus-within .about-photo { filter:grayscale(0%); transform:scale(1.07); }
+.about-photo-wrap:focus-visible { outline:2px solid #d7a46b; outline-offset:4px; }
+@media (max-width:800px) { .grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .about { grid-template-columns:1fr; } .hero-bottom { align-items:flex-start; flex-direction:column; } .scroll-note { display:none; } }
+@media (max-width:520px) { .topbar { align-items:flex-start; gap:20px; flex-direction:column; } .nav { width:100%; justify-content:space-between; gap:10px; font-size:10px; } .hero { min-height:70vh; } .hero:after { font-size:70vw; } .grid { grid-template-columns:1fr; } .project { padding:8px; } .poster { aspect-ratio: 5 / 4; } .contact-top { flex-direction:column; } .footer { flex-direction:column; margin-top:60px; } }
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*:before,*:after { transition:none!important; } }
+</style>
+</head>
+<body>
+<div id="site" data-sites-preview-theme="custom">
+<header class="topbar">
+  <a class="wordmark" href="#home" aria-label="Leo Costa início">LEONARDO COSTA</a>
+  <nav class="nav" aria-label="Navegação principal">
+    <a href="#work">Trabalhos</a><a href="#about">Sobre</a><a href="#contact">Contacto</a>
+  </nav>
+</header>
+<main>
+  <section class="hero" id="home">
+    <video class="hero-video" autoplay muted loop playsinline
+       poster="images/showreel-poster.jpg">
+  <source src="videos/show.mp4" type="video/mp4">
+</video>
+    <p class="eyebrow">Realização · Videografia</p>
+    <h1>Histórias<br>em movimento.</h1>
+    <div class="hero-bottom">
+      <p class="intro">Um espaço para reunir experiências criativas. Cada projeto conta uma história diferente.</p>
+      <a class="scroll-note" href="#work">Explorar trabalhos ↓</a>
+    </div>
+  </section>
+  <section id="work" aria-labelledby="work-title">
+    <div class="section-head"><h2 id="work-title">Portefólio</h2><span>Seleciona um projeto para ver o trabalho</span></div>
+    <div class="grid">
+      <article class="project"><a href="#" class="portfolio-target" data-project="0" aria-label="Adicionar ligação para projeto 1"><div class="poster"><span class="poster-label">Projeto<br>01</span></div></a><div class="project-info"><span>Categoria / tipo de trabalho</span><span>2026</span></div><a class="project-link portfolio-edit" href="#" data-project="0">Adicionar vídeo ou ligação ↗</a></article>
+      <article class="project"><a href="#" class="portfolio-target" data-project="1" aria-label="Adicionar ligação para projeto 2"><div class="poster"><span class="poster-label">Projeto<br>02</span></div></a><div class="project-info"><span>Categoria / tipo de trabalho</span><span>2026</span></div><a class="project-link portfolio-edit" href="#" data-project="1">Adicionar vídeo ou ligação ↗</a></article>
+      <article class="project"><a href="#" class="portfolio-target" data-project="2" aria-label="Adicionar ligação para projeto 3"><div class="poster"><span class="poster-label">Projeto<br>03</span></div></a><div class="project-info"><span>Categoria / tipo de trabalho</span><span>2025</span></div><a class="project-link portfolio-edit" href="#" data-project="2">Adicionar vídeo ou ligação ↗</a></article>
+      <article class="project"><a href="#" class="portfolio-target" data-project="3" aria-label="Adicionar ligação para projeto 4"><div class="poster"><span class="poster-label">Projeto<br>04</span></div></a><div class="project-info"><span>Categoria / tipo de trabalho</span><span>2025</span></div><a class="project-link portfolio-edit" href="#" data-project="3">Adicionar vídeo ou ligação ↗</a></article>
+      <article class="project"><a href="#" class="portfolio-target" data-project="4" aria-label="Adicionar ligação para projeto 5"><div class="poster"><span class="poster-label">Projeto<br>05</span></div></a><div class="project-info"><span>Categoria / tipo de trabalho</span><span>2024</span></div><a class="project-link portfolio-edit" href="#" data-project="4">Adicionar vídeo ou ligação ↗</a></article>
+      <article class="project"><a href="#" class="portfolio-target" data-project="5" aria-label="Adicionar ligação para projeto 6"><div class="poster"><span class="poster-label">Projeto<br>06</span></div></a><div class="project-info"><span>Categoria / tipo de trabalho</span><span>2024</span></div><a class="project-link portfolio-edit" href="#" data-project="5">Adicionar vídeo ou ligação ↗</a></article>
+    </div>
+  </section>
+  <section class="about" id="about">
+    <div><p class="eyebrow">Um pouco sobre mim</p><h2>Olhar atento.<br>Decisões<br>precisas.</h2><div class="about-photo-wrap" tabindex="0" aria-label="Fotografia de Leo Costa: passa o rato por cima para ver a cor"><img class="about-photo" src="" alt="Fotografia de Leo Costa" loading="lazy"></div></div>
+    <div class="about-copy"><p>Sou realizador e trabalho com imagem, ritmo e narrativa em diferentes formatos. Este portefólio foi pensado para reunir projetos de televisão, cinema, documentário, publicidade, música, eventos e conteúdo digital.</p><p>Tenho Experiência em captação de imagem, edição e pós-produção, com capacidade para adaptar a abordagem técnica e visual a diferentes formatos.</p><a class="about-link" href="#contact">Vamos falar ↗</a></div>
+  </section>
+  <section class="contact" id="contact">
+    <div class="contact-top"><div><p class="eyebrow">Tens um projeto em mente?</p><h2>Vamos<br>conversar.</h2><a class="contact-mail" href="mailto:prodbycori@gmail.com">prodbycori@gmail.com ↗</a></div><p class="eyebrow">Disponível para novos projetos</p></div>
+    <footer class="footer"><span>© <span id="year">2026</span> Leonardo Cordeiro Costa</span><div class="socials"><a href="#home">Voltar ao topo ↑</a><a href="mailto:prodbycori@gmail.com">Email</a></div><span>Realização · Imagem · Narrativa</span></footer>
+  </section>
+</main>
+</div>
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+// Personaliza os dados dos projetos neste bloco. Usa ligações públicas para vídeos ou páginas de projeto.
+const portfolioProjects = [
+  // Em cada thumbnail, coloca o caminho da imagem, por exemplo: 'images/projeto-01.jpg'.
+  { title: 'Sonho - Tomás Duarte', category: 'Música / Captação + Edição e Pós-Produção', year: '2025', url: 'https://youtu.be/4i_ueeoelfc?list=RD4i_ueeoelfc', thumbnail: 'images/sonho.png' },
+  { title: 'Ensaio e TAL 2025', category: 'Documentário / Captação + Edição e Pós-Produção', year: '2025', url: 'https://youtu.be/oeaDYbgZ4tg', thumbnail: 'images/ensaioetal.png' },
+  { title: 'MariaSilva - Ao Vivo na Casa do Comum', category: 'Música / Captação + Edição e Pós-Produção', year: '2025', url: 'https://youtu.be/cR2SGbYC87k', thumbnail: 'images/segadinha.png' },
+  { title: 'Do Varão Nasceu a Vara', category: 'Música / Captação + Edição e Pós-Produção', year: '2025', url: 'https://youtu.be/PAVZLGckmvg', thumbnail: 'images/varao.png' },
+  { title: 'Coelhos - Teaser Aniversário AEESCS', category: 'Curta-mertragem / Captação + Edição e Pós-Produção', year: '2024', url: 'https://youtu.be/KsSJxDo8bmU', thumbnail: 'images/coelhos.png' },
+  { title: 'Sir Dinha Blues Band Live Session', category: 'Música / Captação + Edição e Pós-Produção', year: '2025', url: 'https://youtu.be/Kq4EHIKyBbg', thumbnail: 'images/dinha.jpg' }
+];
+const aboutPhoto = 'images/portf1.jpg';
+if (aboutPhoto) document.querySelector('.about-photo').src = aboutPhoto;
+document.querySelectorAll('[data-project]').forEach((link) => {
+  const project = portfolioProjects[Number(link.dataset.project)];
+  if (!project) return;
+  if (link.classList.contains('portfolio-target')) {
+    link.querySelector('.poster-label').innerHTML = project.title.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    link.href = project.url || '#contact';
+    link.addEventListener('click', (event) => {
+      if (!project.url) { event.preventDefault(); document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' }); }
+    });
+  } else {
+    link.href = project.url || '#about';
+    link.textContent = project.url ? 'Ver projeto ↗' : 'Adicionar vídeo ou ligação ↗';
+    link.addEventListener('click', (event) => {
+      if (!project.url) { event.preventDefault(); document.querySelector('#about').scrollIntoView({ behavior: 'smooth' }); }
+    });
+  }
+  const article = link.closest('.project');
+  if (project.thumbnail) {
+    const poster = article.querySelector('.poster');
+    poster.classList.add('has-thumbnail');
+    poster.style.backgroundImage = `url("${project.thumbnail.replace(/["\\]/g, '')}")`;
+  }
+  const info = article.querySelector('.project-info');
+  info.children[0].textContent = project.category;
+  info.children[1].textContent = project.year;
+});
+</script>
+</body>
+</html>
